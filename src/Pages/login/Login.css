@@ -1,5 +1,4 @@
-/* src/Login.css */
-
+/* === Partie commune déjà présente === */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -26,7 +25,11 @@ body {
 .login-box h2 {
   margin-bottom: 25px;
   color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
+
 
 .login-box input {
   width: 100%;
@@ -35,8 +38,45 @@ body {
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
+/* === Champ mot de passe avec icône === */
+.password-container {
+  position: relative;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.password-container input {
+  padding: 12px;
+  padding-right: 40px;
+  margin: 0; /* Enlève la marge du input pour garder le contrôle via le container */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Icône de l’œil */
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  width: 24px;
+  height: 24px;
+}
+
+.size-6 {
+  width: 24px;
+  height: 24px;
+}
+
+/* === Bouton === */
 .login-box button {
   width: 100%;
   padding: 12px;
@@ -51,4 +91,8 @@ body {
 
 .login-box button:hover {
   background-color: #434190;
+}
+.login-logo {
+  width: 160px;
+  margin-top: 20px;
 }
