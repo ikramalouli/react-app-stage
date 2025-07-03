@@ -93,6 +93,7 @@ function Dashboard() {
     return "white";
   };
 
+      
   const handleAddTicket = () => {
     setFormTouched(true);
     if (!isFormValid) return;
@@ -120,9 +121,9 @@ function Dashboard() {
     setTickets(filteredTickets);
   };
 
-  const isFormValid = newDescription && newProjet && newStatut && newEnv && newDeliveryDate;
+const isFormValid = newDescription && newProjet && newStatut && newEnv && newDeliveryDate;
 
-  return (
+return (
     <div className="dashboard-container">
       <div className="dashboard-header">
         <div className="logo">PCA</div>
@@ -133,9 +134,7 @@ function Dashboard() {
       </div>
 
       {/* bouton filtres déplacé */}
-      <div className="filters-fixed">
-        <Button text="Filtres" onPress={() => setShowFilter(true)} className="btn-filtrer" />
-      </div>
+      
 
       {showForm && (
         <div className="modal-overlay" onClick={() => setShowForm(false)}>
@@ -181,24 +180,43 @@ function Dashboard() {
         <div className="modal-overlay" onClick={() => setShowFilter(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="filtres modal-form">
-              <h3>Filtres</h3>
               <div className="filtres-row">
                 <div className="dropdown-container" ref={statutRef}>
                   <div className="dropdown-header" onClick={() => setShowStatutOptions(!showStatutOptions)}>
-                    Statut
+                  <svg
+                  className={`icon-arrow ${showStatutOptions ? 'rotate' : ''}`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                </svg>
+                  <span>Statut</span>
                   </div>
                   {showStatutOptions && (
                     <div className="dropdown-options">
                       <label><input type="checkbox" checked={filtreStatut.includes("not_started")} onChange={() => toggleFilterValue("not_started", setFiltreStatut, filtreStatut)} /> Pas commencé</label>
                       <label><input type="checkbox" checked={filtreStatut.includes("ongoing")} onChange={() => toggleFilterValue("ongoing", setFiltreStatut, filtreStatut)} /> En cours</label>
                       <label><input type="checkbox" checked={filtreStatut.includes("done")} onChange={() => toggleFilterValue("done", setFiltreStatut, filtreStatut)} /> Terminé</label>
-                    </div>
+                  </div>
                   )}
                 </div>
 
                 <div className="dropdown-container" ref={envRef}>
                   <div className="dropdown-header" onClick={() => setShowEnvOptions(!showEnvOptions)}>
-                    Environnement
+                  <svg
+                  className={`icon-arrow ${showEnvOptions ? 'rotate' : ''}`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                </svg>
+                    <span>Environnement</span>
                   </div>
                   {showEnvOptions && (
                     <div className="dropdown-options">
@@ -229,6 +247,9 @@ function Dashboard() {
       ) : (
         <div className="dashboard-container">
           <h2>Tickets</h2>
+          <span className="filters-fixed">
+            <Button text="Filtres" onPress={() => setShowFilter(true)} className="btn-filtrer" />
+          </span>
           <div className="ticket-list">
             {ticketsFiltres.map((ticket, index) => (
               <div

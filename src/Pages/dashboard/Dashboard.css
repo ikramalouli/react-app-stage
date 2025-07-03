@@ -23,7 +23,7 @@ body {
   border-radius: 10px;
   margin-bottom: 30px;
  }
- 
+
  .dashboard-header .logo {
   font-weight: bold;
   font-size: 22px;
@@ -279,8 +279,10 @@ body {
 }
 .filtres-row {
   display: flex;
+  flex-direction: column;
   gap: 20px;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   margin-top: 10px;
 }
@@ -292,8 +294,6 @@ body {
 
 .dropdown-header {
   padding: 10px;
-  background-color: #f4f4f4;
-  border: 1px solid #ccc;
   border-radius: 8px;
   text-align: center;
   font-weight: bold;
@@ -370,9 +370,9 @@ body {
 
 
 .filters-fixed {
-  position: fixed;
-  top: 130px;       /* descend un peu plus sous le header */
-  right: 20px;
+  position: relative;
+  bottom : 55px;       /* monte un peu plus à coté du titre */
+  left: 85%;;
   z-index: 999;
 }
 
@@ -381,4 +381,20 @@ body {
   font-size: 16px;
   font-weight: 600;
   border-radius: 12px;
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.icon-arrow {
+  transition: transform 0.3s ease;
+}
+
+.icon-arrow.rotate {
+  transform: rotate(180deg);
 }
